@@ -1,7 +1,6 @@
 const forwarderOrigin = 'http://localhost:9010';
 //const {chainIdtoName} = require('./utils/chains.js');
 const Web3 = require('web3');
-const Contract = require('web3-eth-contract');
 const MetaMaskOnboarding = require('@metamask/onboarding');
 
 
@@ -14,9 +13,11 @@ const initialize = () => {
 
   //Contract Deployment Section
   const deployButton = document.getElementById('deployButton');
-  const depositButton = document.getElementById('depositButton')
-  const withdrawButton = document.getElementById('withdrawButton')
-  const contractStatus = document.getElementById('contractStatus')
+  const contractInputData = document.getElementById('deployedContractAddress');
+  const setContractButton = document.getElementById('setContractButton');
+  const depositButton = document.getElementById('depositButton');
+  const withdrawButton = document.getElementById('withdrawButton');
+  const contractStatus = document.getElementById('contractStatus');
 
   
 
@@ -136,7 +137,7 @@ const initialize = () => {
       contractStatus.innerHTML = 'Deploying';
       const accounts = await ethereum.request({ method: 'eth_accounts' });
       
-      window.contract.deploy(
+      await window.contract.deploy(
         {
           data: '0x608060405234801561001057600080fd5b5033600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000808190555061023b806100686000396000f300608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632e1a7d4d1461005c5780638da5cb5b1461009d578063d0e30db0146100f4575b600080fd5b34801561006857600080fd5b5061008760048036038101908080359060200190929190505050610112565b6040518082815260200191505060405180910390f35b3480156100a957600080fd5b506100b26101d0565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100fc6101f6565b6040518082815260200191505060405180910390f35b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561017057600080fd5b8160008082825403925050819055503373ffffffffffffffffffffffffffffffffffffffff166108fc839081150290604051600060405180830381858888f193505050501580156101c5573d6000803e3d6000fd5b506000549050919050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60003460008082825401925050819055506000549050905600a165627a7a72305820f237db3ec816a52589d82512117bc85bc08d3537683ffeff9059108caf3e5d400029',
         }).send({
@@ -149,10 +150,11 @@ const initialize = () => {
           .on('confirmation', function(confirmationNumber, receipt){
             if(confirmationNumber<1){
             console.log(confirmationNumber)
-            }
-            console.log(receipt) 
-            contractStatus.innerHTML = 'Contract Deployed' 
+            console.log(receipt)
+            contractStatus.innerHTML = 'Contract Deployed'
+            } 
             deployButton.disabled = true
+            setContractButton.disabled = true
             depositButton.disabled = false
             withdrawButton.disabled = false
           })
@@ -161,7 +163,65 @@ const initialize = () => {
       });
 
     };
-  
+
+    setContractButton.onclick = async () => {
+      contractStatus.innerHTML = 'Setting PiggyBank Address'
+      let isAddress;
+      try {
+        isAddress = web3.utils.toChecksumAddress(contractInputData.value)
+      } catch(e) { 
+        console.error('invalid ethereum address', e.message) 
+        contractStatus.innerHTML = e.message
+      }
+      if(isAddress){
+        window.contract.options.address = contractInputData.value
+        deployButton.disabled = true
+        setContractButton.disabled = true
+        depositButton.disabled = false
+        withdrawButton.disabled = false
+        contractStatus.innerHTML = 'PiggyBank Address sucessfully changed!'
+      }
+    };
+
+    depositButton.onclick = async () => {
+      contractStatus.innerHTML = 'Depositing 0.002 ETH to PiggyBank'
+      const accounts = await ethereum.request({ method: 'eth_accounts' })
+      await window.contract.methods.deposit()
+      .send({from: accounts[0], value: '0x71AFD498D0000'})
+      .on('error', function(error){
+        console.log(error) 
+        ontractStatus.innerHTML = 'Deposit Failed'
+      })
+      .on('confirmation', function(confirmationNumber, receipt){
+        if(confirmationNumber<1){
+        console.log(confirmationNumber)
+        console.log(receipt)
+        contractStatus.innerHTML = 'Deposit Sucessful'
+        }
+      }).then(function(receipt){
+        console.log(receipt)
+      })
+    };
+
+    withdrawButton.onclick = async () => {
+      contractStatus.innerHTML = 'Withdrawing 0.002 ETH from PiggyBank'
+      const accounts = await ethereum.request({ method: 'eth_accounts' })
+      await window.contract.methods.withdraw('0x71AFD498D0000').send({from: accounts[0]})
+      .on('error', function(error){
+        console.log(error) 
+        ontractStatus.innerHTML = 'Withdraw Failed'
+      })
+      .on('confirmation', function(confirmationNumber, receipt){
+        if(confirmationNumber<1){
+        console.log(confirmationNumber)
+        console.log(receipt)
+        contractStatus.innerHTML = 'Withdraw Sucessful'
+        }
+      }).then(function(receipt){
+        console.log(receipt)
+      })
+    };
+
 };
 
 window.addEventListener('DOMContentLoaded', initialize);
