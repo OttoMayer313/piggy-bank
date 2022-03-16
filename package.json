@@ -1,7 +1,7 @@
 {
-  "name": "metamask-simple-dapp",
+  "name": "piggy-bank",
   "version": "1.0.0",
-  "description": "Building a simple dapp used in MetaMask e2e tests.",
+  "description": "Building a simple PiggyBank Dapp.",
   "type": "module",
   "scripts": {
     "deploy": "./deploy.sh",
@@ -12,20 +12,21 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/menezesphill/piggy-bank.git"
   },
   "files": [
     "/contract.js",
     "/index.html"
   ],
-  "author": "MetaMask",
+  "author": "menezesphill",
   "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/menezesphill/piggy-bank/issues"
   },
   "homepage": "",
   "dependencies": {
     "@metamask/onboarding": "^1.0.1",
+    "prettier": "^2.6.0",
     "web3": "^1.7.1"
   },
   "devDependencies": {
