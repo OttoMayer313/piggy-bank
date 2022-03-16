@@ -24,7 +24,7 @@ A static server will start and be served at http://localhost:9011
 
 # 🧰 Making changes to the dApp
 
-We use [Browserify](https://browserify.org/) to require('modules') on our browser. So, in order to modify this dApp we need to:
+We use [Browserify](https://browserify.org/) to require('modules') on our browser. So, in order to modify this dApp you need to:
 
 💿 Install Browserify:
 
@@ -32,10 +32,10 @@ We use [Browserify](https://browserify.org/) to require('modules') on our browse
 npm install -g browserify
 ```
 
-Any time we edit [Contract.js](https://github.com/menezesphill/piggy-bank/blob/main/contract.js), it is necessary to bundle all our new edited file with all our dependencies by using:
+Any time you edit [Contract.js](https://github.com/menezesphill/piggy-bank/blob/main/contract.js), it is necessary to bundle the new edited file with all your dependencies by using:
 
 ```sh
 browserify contract.js -o bundle.js
 ```
 
-And reload the dApp by using `Ctrl` + `Shift` + `R` to reload the page and see the changes reflect at http://localhost:9011
+And reload the dApp by using `Ctrl` + `Shift` + `R` to see the changes reflect at http://localhost:9011
