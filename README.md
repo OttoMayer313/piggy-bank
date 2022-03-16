@@ -24,9 +24,9 @@ A static server will start and be served at http://localhost:9011
 
 # 🧰 Editing the JS components
 
-In order to modify this dApp, we use [Browserify](https://browserify.org/) to require('modules') on our browser.
+We use [Browserify](https://browserify.org/) to require('modules') on our browser. So, in order to modify this dApp we need to:
 
-💿 Installing Browserify:
+💿 Install Browserify:
 
 ```sh
 npm install -g browserify
