@@ -1,0 +1,90 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "withdrawAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [
+					{
+						"name": "remainingBal",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "deposit",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"piggybank.sol": "PiggyBank"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"piggybank.sol": {
+			"keccak256": "0xc18e14d55d98f7dc14a97ea854e8f84809cae9a96b6bd60e3caf7c28c4f6df48",
+			"urls": [
+				"bzzr://a0826a2371216169c51adf7ad4a2c247704696dcf455d73a5fe7fc57532e3c45"
+			]
+		}
+	},
+	"version": 1
+}
