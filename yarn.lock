@@ -3139,7 +3139,7 @@ sshpk@^1.7.0:
 
 static-server@^2.2.1:
   version "2.2.1"
-  resolved "https://registry.npmjs.org/static-server/-/static-server-2.2.1.tgz"
+  resolved "https://registry.yarnpkg.com/static-server/-/static-server-2.2.1.tgz#49e3cae2a001736b0ee9e95d21d3d843fc95efaa"
   integrity sha512-j5eeW6higxYNmXMIT8iHjsdiViTpQDthg7o+SHsRtqdbxscdHqBHXwrXjHC8hL3F0Tsu34ApUpDkwzMBPBsrLw==
   dependencies:
     chalk "^0.5.1"

@@ -4,6 +4,7 @@ const Web3 = require("web3");
 const MetaMaskOnboarding = require("@metamask/onboarding");
 
 const initialize = () => {
+  //let ethereum;
   //Basic Actions Section
   const onboardButton = document.getElementById("connectButton");
   const chainIdlabel = document.getElementById("chainId");
@@ -77,29 +78,34 @@ const initialize = () => {
       onboardButtonUpdate(accounts);
     }
 
-    const chainId = await ethereum.request({ method: "eth_chainId" });
-    chainIdlabel.innerHTML = parseInt(chainId, 16);
-    networkLabel.innerHTML = chainIdtoName(parseInt(chainId, 16));
+    if (ethereum) {
+      const chainId = await ethereum.request({ method: "eth_chainId" });
+      chainIdlabel.innerHTML = parseInt(chainId, 16);
+      networkLabel.innerHTML = chainIdtoName(parseInt(chainId, 16));
 
-    ethereum.on("chainChanged", (chainId) => {
-      // Handle the new chain.
-      // Correctly handling chain changes can be complicated.
-      // We recommend reloading the page unless you have good reason not to.
-      window.location.reload();
-    });
-    window.web3 = new Web3(window.ethereum);
-  };
+      ethereum.on("chainChanged", (chainId) => {
+        // Handle the new chain.
+        // Correctly handling chain changes can be complicated.
+        // We recommend reloading the page unless you have good reason not to.
+        window.location.reload();
+      });
 
-  ethereum.on("accountsChanged", (accounts) => {
-    // Handle the new accounts, or lack thereof.
-    // 'accounts' will always be an array, but it can be empty.
+      
+      ethereum.on("accountsChanged", (accounts) => {
+          // Handle the new accounts, or lack thereof.
+          // 'accounts' will always be an array, but it can be empty.
 
-    if (accounts.length === 0) {
-      window.location.reload();
-    } else {
-      onboardButtonUpdate(accounts);
+        if (accounts.length === 0) {
+            window.location.reload();
+        } else {
+            onboardButtonUpdate(accounts);
+        }
+      });
+      
+
+      window.web3 = new Web3(window.ethereum);
     }
-  });
+  };
 
   // chainIdtoName is a map list to attribute each chain ID to
   // a specific chain name. A full chain id and name list can be found
