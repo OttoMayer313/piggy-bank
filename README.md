@@ -22,7 +22,7 @@ yarn run serve
 A static server will start and be served at http://localhost:9011
 
 
-# 🧰 Editing the JS components
+# 🧰 Editing the dApp
 
 We use [Browserify](https://browserify.org/) to require('modules') on our browser. So, in order to modify this dApp we need to:
 
