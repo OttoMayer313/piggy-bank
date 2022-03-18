@@ -4,11 +4,12 @@
   "description": "Building a simple PiggyBank Dapp.",
   "type": "module",
   "scripts": {
-    "deploy": "./deploy.sh",
     "lint": "eslint . --ext js,json",
     "lint:fix": "eslint . --fix --ext js,json",
-    "serve": "static-server . --port 9011",
-    "test": "yarn lint"
+    "serve": "static-server ./src --port 9011",
+    "test": "yarn lint",
+    "dist": "static-server ./dist --port 9011",
+    "build": "parcel build src/index.html"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   "homepage": "",
   "dependencies": {
     "@metamask/onboarding": "^1.0.1",
+    "parcel": "^2.3.2",
     "prettier": "^2.6.0",
     "web3": "^1.7.1"
   },

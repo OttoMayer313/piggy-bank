@@ -1,0 +1,1 @@
+{"mappings":"AAAA,QACA,aACA,CAEA,WACA,eACA,CAEA,YACA,UACA,CAEA,UACA,iBACA","sources":["src/index.css"],"sourcesContent":["section {\n  margin: 20px 0 20px 0;\n}\n\n.info-text {\n  font-size: 1.1em;\n}\n\n.full-width {\n  width: 100%;\n}\n\n.h4-align {\n  text-align: center;\n}"],"names":[],"version":3,"file":"index.80c6ebbe.css.map"}
