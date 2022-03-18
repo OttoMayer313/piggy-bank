@@ -4,3 +4,4 @@ backups
 .vscode
 dist
 .parcel-cache
+gh-pages-deploy.sh
