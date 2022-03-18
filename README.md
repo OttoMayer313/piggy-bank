@@ -37,7 +37,7 @@ We use [Browserify](https://browserify.org/) to require('modules') on our browse
 npm install -g browserify
 ```
 
-Any time you edit [Contract.js](https://github.com/menezesphill/piggy-bank/blob/main/contract.js), it is necessary to bundle the new edited file with all your dependencies by using:
+Any time you edit [contract.js](https://github.com/menezesphill/piggy-bank/blob/main/src/contract.js), it is necessary to bundle the new edited file with all your dependencies by using:
 
 ```sh
 browserify contract.js -o bundle.js
