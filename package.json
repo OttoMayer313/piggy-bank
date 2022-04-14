@@ -9,7 +9,7 @@
     "serve": "static-server ./src --port 9011",
     "test": "yarn lint",
     "dist": "static-server ./dist --port 9011",
-    "build": "parcel build src/index.html"
+    "build": "browserify ./src/contract.js -o ./src/bundle.js && parcel build src/index.html"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
   "homepage": "",
   "dependencies": {
     "@metamask/onboarding": "^1.0.1",
+    "browserify": "^17.0.0",
     "parcel": "^2.3.2",
     "prettier": "^2.6.0",
     "web3": "^1.7.1"
