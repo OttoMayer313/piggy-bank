@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint . --ext js,json",
     "lint:fix": "eslint . --fix --ext js,json",
-    "serve": "static-server ./src --port 9011",
+    "serve": "browserify ./src/contract.js -o ./src/bundle.js && static-server ./src --port 9011",
     "test": "yarn lint",
     "dist": "static-server ./dist --port 9011",
     "build": "browserify ./src/contract.js -o ./src/bundle.js && parcel build src/index.html"
