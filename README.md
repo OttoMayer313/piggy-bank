@@ -27,20 +27,3 @@ A static server will start and be served at http://localhost:9011
 yarn run build
 ```
 
-# 🧰 Making changes to the dApp
-
-We use [Browserify](https://browserify.org/) to require('modules') on our browser. So, in order to modify this dApp you need to:
-
-💿 Install Browserify:
-
-```sh
-npm install -g browserify
-```
-
-Any time you edit [contract.js](https://github.com/menezesphill/piggy-bank/blob/main/src/contract.js), it is necessary to bundle the new edited file with all your dependencies by using:
-
-```sh
-browserify contract.js -o bundle.js
-```
-
-And reload the dApp by using `Ctrl` + `Shift` + `R` to see the changes reflect at http://localhost:9011
