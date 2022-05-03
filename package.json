@@ -1,19 +1,13 @@
 {
-  "name": "piggy-bank",
+  "name": "token-generator",
   "version": "1.0.0",
-  "description": "Building a simple PiggyBank Dapp.",
+  "description": "Token Generator",
   "type": "module",
   "scripts": {
-    "lint": "eslint . --ext js,json",
-    "lint:fix": "eslint . --fix --ext js,json",
+    "lint": "standard .",
+    "lint:fix": "standard . --fix",
     "serve": "browserify ./src/contract.js -o ./src/bundle.js && static-server ./src --port 9011",
-    "test": "yarn lint",
-    "dist": "static-server ./dist --port 9011",
     "build": "browserify ./src/contract.js -o ./src/bundle.js && parcel build src/index.html"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/menezesphill/piggy-bank.git"
   },
   "files": [
     "/contract.js",
@@ -21,22 +15,14 @@
   ],
   "author": "menezesphill",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/menezesphill/piggy-bank/issues"
-  },
-  "homepage": "",
   "dependencies": {
     "@metamask/onboarding": "^1.0.1",
     "browserify": "^17.0.0",
     "parcel": "^2.3.2",
-    "prettier": "^2.6.0",
     "web3": "^1.7.1"
   },
   "devDependencies": {
     "@metamask/eslint-config": "^2.0.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-json": "^2.0.1",
     "static-server": "^2.2.1"
   }
 }

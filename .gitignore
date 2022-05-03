@@ -5,3 +5,4 @@ backups
 dist
 .parcel-cache
 gh-pages-deploy.sh
+src/bundle.js
